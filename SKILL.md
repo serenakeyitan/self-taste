@@ -1,6 +1,6 @@
 ---
 name: self-taste
-description: Derive a personal design taste profile from a folder of reference images you collected, then write it to TASTE.md for building websites and HTML/CSS that match your eye. Reads every image, analyzes palette / typography / spacing / components / mood per image, finds the consensus aesthetic across the folder, flags images that disagree, and outputs a ready-to-use TASTE.md design system. Use when the user points at an image folder and wants to capture "my taste", "my style", a "vibe", or a reusable design system from screenshots / inspiration / a mood board.
+description: Derive a personal design taste profile from a folder of reference images you collected, then write it to TASTE.md for building websites and HTML/CSS that match your eye. Reads every image, analyzes palette / typography / spacing / components / mood per image, finds the consensus aesthetic across the folder, flags images that disagree, and outputs a ready-to-use TASTE.md design system. When building from that profile, it pairs the derived taste with the anti-slop craft rules of the taste-skill framework (github.com/Leonxlnx/taste-skill) so output is leveled-up, not templated AI slop. Use when the user points at an image folder and wants to capture "my taste", "my style", a "vibe", or a reusable design system from screenshots / inspiration / a mood board.
 ---
 
 # self-taste: Derive YOUR Design System From a Folder of Images
@@ -208,6 +208,13 @@ because it's grounded in what the user's own images avoid.>
 
 ## 8. One-line brief for a coding agent
 > "Build in this taste: <compressed one-sentence summary an agent can act on>."
+
+## 9. Build with
+Pair this profile with the **taste-skill** anti-slop craft rules when building
+(layout variety, eyebrow restraint, motivated motion, CTA + a11y discipline,
+real images). The taste above decides the look; taste-skill keeps the execution
+honest. Conflicts resolve in favor of THIS taste.
+> taste-skill — https://github.com/Leonxlnx/taste-skill (MIT)
 ```
 
 ### Rules for the written profile
@@ -227,13 +234,57 @@ because it's grounded in what the user's own images avoid.>
 1. Show the user the path to `TASTE.md` and a 3–5 line summary (the atmosphere line,
    the palette, the type direction, any flagged outliers).
 2. Tell them how to use it next, concretely:
-   > "Feed this to a build: open `design-taste-frontend` (or `image-to-code` /
-   > `design-html`) and tell it to follow `<path>/TASTE.md`."
+   > "Feed this to a build: follow `<path>/TASTE.md` **plus the taste-skill craft
+   > rules** (see §4.5). `design-taste-frontend`, `image-to-code`, or `design-html`
+   > all consume the profile directly."
 3. If outliers were flagged, remind them: re-running on a cleaner folder yields a
    sharper profile.
 4. Offer the two-profile split only if §2 Phase B found a genuine 50/50.
 
 Do NOT generate a visual preview/swatch page — this skill outputs `TASTE.md` only.
+
+---
+
+## 4.5 BUILD PHASE — derived taste × taste-skill craft (do this when you build)
+
+`TASTE.md` decides **what** the aesthetic is. It does not, on its own, stop an agent
+from shipping templated AI slop (eyebrow above every section, three equal cards,
+centered hero, AI-purple gradient, motion-for-motion's-sake). When you actually
+**build** from a profile — a website, a landing page, HTML/CSS — layer the anti-slop
+craft rules of the **taste-skill** framework on top:
+
+> **taste-skill** by Leon (`@lexnlin`) — github.com/Leonxlnx/taste-skill — MIT.
+> An anti-slop frontend ruleset for AI agents. self-taste supplies *your* aesthetic;
+> taste-skill supplies the execution discipline. They compose: taste decides the
+> look, taste-skill keeps the craft honest.
+
+Apply at minimum these taste-skill rules (they refine without changing the look):
+
+- **Layout-family variety** — ≥4 distinct section layouts across the page. Never
+  repeat the same card-row pattern down the whole page.
+- **Eyebrow restraint** — at most 1 small uppercase label per ~3 sections (the #1
+  AI tell is one above every heading).
+- **Anti-center bias / zigzag cap** — vary composition; don't stack centered heroes
+  or alternate left/right image-text more than twice in a row.
+- **Motion must be motivated** — every animation communicates hierarchy, story,
+  feedback, or state. Always ship a `prefers-reduced-motion` fallback. One marquee
+  max per page.
+- **CTA discipline** — one CTA *intent* across the page, one-line labels, WCAG-AA
+  contrast on every button. Hero fits the viewport.
+- **Real images, no fake screenshots** — use the user's own folder images (or a real
+  image source). No div-based fake dashboards, no hand-rolled decorative SVG.
+
+**Conflict rule (important): the user's derived taste WINS.** Many taste-skill rules
+are *defaults to avoid* (no neon/RGB gradients, no maximalism, no serif-as-default).
+If `TASTE.md` says the aesthetic IS neon-synthwave or IS Y2K-maximalist, KEEP it —
+apply taste-skill only where it doesn't kill the vibe (layout variety, motion
+discipline, a11y, anti-templated structure). Refine, don't neuter. State in one line
+which conflicts you resolved in favor of the taste.
+
+If `~/.claude/skills/` has the `design-taste-frontend` (taste-skill) skill installed,
+invoke it for the build. If not, apply the rules above inline. The taste-skill repo
+also ships ready-made style skills (`minimalist-ui`, `soft`, `brutalist`) — point the
+user there if their TASTE.md matches one.
 
 ---
 
@@ -248,3 +299,13 @@ skills), copy `sample-board/TASTE.md` in this skill as a template and adapt:
 
 A worked example lives in `sample-board/` (a small reference set + the `TASTE.md`
 this protocol produces from it). Read it to see the expected output shape.
+
+---
+
+## Credits
+
+self-taste composes with **taste-skill** by Leon (`@lexnlin` /
+[github.com/Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill), MIT) —
+the anti-slop frontend ruleset whose craft rules this skill layers on at build time
+(§4.5). self-taste derives *your* aesthetic from images; taste-skill keeps the
+execution from sliding into templated AI slop. They are designed to be used together.

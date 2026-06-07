@@ -17,8 +17,11 @@ Most "design taste" skills bake in *the author's* taste as fixed rules (ban seri
 3. **Cross-image synthesis** — finds the *consensus* aesthetic: one accent, one corner-radius scale, one type direction. Taste is committing to decisions.
 4. **Outlier flagging** — images that disagree with the majority are listed by filename with a reason, so you can re-curate instead of getting muddy "averaged" taste.
 5. **Self-audit** (specificity / buildability / coherence / evidence) → writes **`TASTE.md`**.
+6. **Build with craft** — when you build from the profile, self-taste layers the anti-slop rules of [**taste-skill**](https://github.com/Leonxlnx/taste-skill) on top (layout variety, eyebrow restraint, motivated motion, CTA + a11y discipline). Your taste decides the look; taste-skill keeps the execution from sliding into templated AI slop. They compose — and conflicts always resolve in favor of *your* taste.
 
 The output format mirrors the `DESIGN.md` convention used across the agent-skills ecosystem, so it plugs straight into frontend/design build skills.
+
+> **Why both?** In testing, sites built from a `TASTE.md` *alone* still drifted toward AI tells (an eyebrow above every section, three equal cards, centered heroes). Re-running the build with taste-skill's craft rules layered on produced a visibly cleaner, less templated result with the same aesthetic. So that pairing is now built into the skill.
 
 ## Install
 
@@ -64,6 +67,15 @@ self-taste/
     ├── TASTE.md          # the extracted design system
     └── README.md         # how to run it / make your own
 ```
+
+## Credits & acknowledgments
+
+self-taste is designed to compose with [**taste-skill**](https://github.com/Leonxlnx/taste-skill) by **Leon** ([@lexnlin](https://x.com/lexnlin)), MIT-licensed — the anti-slop frontend framework for AI agents.
+
+- **taste-skill** is a hand-authored *craft ruleset*: it encodes strong opinions on layout, typography, motion, and anti-templated structure to stop AI-built UIs from looking generic.
+- **self-taste** is the inverse — it *derives* the aesthetic from your own images instead of prescribing one.
+
+Used together, taste-skill supplies the execution discipline and self-taste supplies the personal aesthetic. self-taste invokes taste-skill's rules at build time (see `SKILL.md` §4.5) and the `TASTE.md` output format follows the same `DESIGN.md` convention taste-skill's ecosystem uses. Credit for the craft rules and the anti-slop philosophy goes to that project. 🙏
 
 ## License
 

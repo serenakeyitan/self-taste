@@ -106,3 +106,10 @@ marquees, no aggressive scroll-hijacking — that would contradict "Quiet by des
 > cards with 1px `#E7E2D9` hairlines, Warm-Ink `#1F1D1A` serif headlines over quiet
 > sans body, a single Terracotta `#B5482E` accent, soft 12px corners, airy
 > asymmetric layout, gentle restrained motion."
+
+## 9. Build with
+Pair this profile with the **taste-skill** anti-slop craft rules when building
+(≥4 layout families, eyebrow restraint, motivated motion + reduced-motion fallback,
+one CTA intent, AA contrast, real images). The taste above decides the look;
+taste-skill keeps the execution honest. Conflicts resolve in favor of THIS taste.
+> taste-skill — https://github.com/Leonxlnx/taste-skill (MIT)
