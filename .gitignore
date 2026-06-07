@@ -1,0 +1,11 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# user-generated taste profiles (don't commit personal boards by accident)
+# the shipped sample-board/ is intentionally tracked; ignore others
+/boards/
+TASTE-local.md
